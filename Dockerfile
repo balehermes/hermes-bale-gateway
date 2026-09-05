@@ -63,6 +63,12 @@ WORKDIR /app
 COPY scripts/entrypoint.sh /app/scripts/entrypoint.sh
 RUN sed -i 's/\r$//' /app/scripts/entrypoint.sh && chmod +x /app/scripts/entrypoint.sh
 
+# Agent server + helper scripts (ported from radius-hermes-railway-template)
+COPY scripts/agent_server /app/scripts/agent_server
+COPY scripts/radius /app/scripts/radius
+COPY scripts/godaddy /app/scripts/godaddy
+COPY erc8004_registry /app/erc8004_registry
+
 # Bale platform plugin (THIS REPO)
 COPY plugins /app/plugins
 
