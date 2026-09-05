@@ -595,12 +595,14 @@ def register(ctx) -> None:
         ctx.register_platform(
             name="bale",
             label="Bale Messenger",
+            check_fn=lambda: bool(os.getenv("BALE_BOT_TOKEN")),
             adapter_factory=lambda config: BalePlatformAdapter(
                 bot_token=(os.getenv("BALE_BOT_TOKEN") or "").strip(),
                 config=config,
             ),
         )
-    except AttributeError:
+    except Exception as e:
+        logger.error("[Bale] Failed to register platform: %s", e)
         pass
 
 
