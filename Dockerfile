@@ -59,6 +59,12 @@ ENV PATH="/root/.local/bin:/opt/foundry/bin:/opt/venv/bin:${PATH}" \
 COPY --from=builder /opt/venv /opt/venv
 COPY --from=builder /opt/hermes-agent /opt/hermes-agent
 
+# ALSO drop the Bale platform plugin into the upstream hermes-agent
+# plugins dir. Hermes's bundled-plugins discovery reads from there at
+# gateway start; the symlink into $HERMES_HOME/plugins/ alone is not
+# enough for `platforms` plugins.
+COPY plugins/platforms/bale /opt/hermes-agent/plugins/platforms/bale
+
 WORKDIR /app
 COPY scripts/entrypoint.sh /app/scripts/entrypoint.sh
 RUN sed -i 's/\r$//' /app/scripts/entrypoint.sh && chmod +x /app/scripts/entrypoint.sh
