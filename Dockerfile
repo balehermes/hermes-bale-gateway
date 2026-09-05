@@ -23,11 +23,11 @@ COPY scripts /app/scripts
 COPY plugins /app/plugins
 COPY erc8004_registry /app/erc8004_registry
 
-RUN sed -i 's/\r$//' /app/scripts/entrypoint.sh && chmod +x /app/scripts/entrypoint.sh
+RUN sed -i 's/\r$//' /app/scripts/bootstrap.sh && chmod +x /app/scripts/bootstrap.sh
 
 ENV PYTHONUNBUFFERED=1 \
   HERMES_HOME=/data/.hermes \
   HOME=/data
 
 ENTRYPOINT ["tini", "--"]
-CMD ["/app/scripts/entrypoint.sh"]
+CMD ["/app/scripts/bootstrap.sh"]
