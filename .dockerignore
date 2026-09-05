@@ -1,0 +1,6 @@
+# Bale plugin
+**/*.pyc
+**/__pycache__/
+.git
+.gitignore
+README.md
