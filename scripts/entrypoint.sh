@@ -183,7 +183,7 @@ fi
 # 9. Start agent server (FastAPI on $PORT) and Hermes gateway
 # ----------------------------------------------------------------------------
 echo "[bootstrap] Starting agent server..."
-python3 /app/scripts/agent_server/main.py &
+python3 -m agent_server.main &
 AGENT_PID=$!
 
 _wait_for_agent_server() {
