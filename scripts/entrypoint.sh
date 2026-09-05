@@ -20,6 +20,11 @@ CONFIG_FILE="${HERMES_HOME}/config.yaml"
 mkdir -p "${HERMES_HOME}" "${HERMES_HOME}/logs" "${HERMES_HOME}/sessions" "${HERMES_HOME}/cron" "${HERMES_HOME}/pairing" "${MESSAGING_CWD}"
 mkdir -p "${HOME}/.claude"
 
+# DEBUG
+echo "=== Debugging file structure ==="
+ls -R /app | head -n 50
+# END DEBUG
+
 # ----------------------------------------------------------------------------
 # 1. Provider check
 # ----------------------------------------------------------------------------
